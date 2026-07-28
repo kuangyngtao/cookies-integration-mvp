@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest run",
-    "contract:check": "redocly lint ../api/openapi/platform-v1.yaml && ajv compile -s ../api/events/event-envelope.schema.json --spec=draft2020 -c ajv-formats && ajv compile -s ../api/events/model-job-completed-v1.schema.json -r ../api/events/event-envelope.schema.json --spec=draft2020 -c ajv-formats && ajv compile -s ../api/events/asset-ready-v1.schema.json -r ../api/events/event-envelope.schema.json --spec=draft2020 -c ajv-formats",
+    "contract:check": "redocly lint ../api/openapi/platform-v1.yaml && ajv compile -s ../api/events/event-envelope.schema.json --spec=draft2020 -c ajv-formats && ajv compile -s ../api/events/model-job-completed-v1.schema.json -r ../api/events/event-envelope.schema.json --spec=draft2020 -c ajv-formats && ajv compile -s ../api/events/asset-ready-v1.schema.json -r ../api/events/event-envelope.schema.json --spec=draft2020 -c ajv-formats && ajv validate -s ../api/contracts/strategy-creative-handoff-v1.schema.json -d ../api/fixtures/strategy-creative-handoff-v1-ready.json -d ../api/fixtures/strategy-creative-handoff-v1-blocked.json --spec=draft2020 -c ajv-formats && ajv validate -s ../api/contracts/creative-intake-create-v2.schema.json -r ../api/contracts/strategy-creative-handoff-v1.schema.json -d ../api/fixtures/creative-intake-create-v2.json --spec=draft2020 -c ajv-formats && ajv validate -s ../api/contracts/creative-intake-v2.schema.json -r ../api/contracts/strategy-creative-handoff-v1.schema.json -d ../api/fixtures/creative-intake-v2-ready.json --spec=draft2020 -c ajv-formats",
     "check": "npm run lint && npm run test && npm run build"
   },
   "dependencies": {
